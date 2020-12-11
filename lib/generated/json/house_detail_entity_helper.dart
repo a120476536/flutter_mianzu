@@ -1,0 +1,93 @@
+import 'package:flutter_mianzu/entity/house/house_detail_entity.dart';
+
+houseDetailEntityFromJson(HouseDetailEntity data, Map<String, dynamic> json) {
+	if (json['code'] != null) {
+		data.code = json['code']?.toString();
+	}
+	if (json['data'] != null) {
+		data.data = new HouseDetailData().fromJson(json['data']);
+	}
+	if (json['msg'] != null) {
+		data.msg = json['msg']?.toString();
+	}
+	return data;
+}
+
+Map<String, dynamic> houseDetailEntityToJson(HouseDetailEntity entity) {
+	final Map<String, dynamic> data = new Map<String, dynamic>();
+	data['code'] = entity.code;
+	if (entity.data != null) {
+		data['data'] = entity.data.toJson();
+	}
+	data['msg'] = entity.msg;
+	return data;
+}
+
+houseDetailDataFromJson(HouseDetailData data, Map<String, dynamic> json) {
+	if (json['id'] != null) {
+		data.id = json['id']?.toInt();
+	}
+	if (json['username'] != null) {
+		data.username = json['username']?.toString();
+	}
+	if (json['home_name'] != null) {
+		data.homeName = json['home_name']?.toString();
+	}
+	if (json['home_province'] != null) {
+		data.homeProvince = json['home_province']?.toString();
+	}
+	if (json['home_city'] != null) {
+		data.homeCity = json['home_city']?.toString();
+	}
+	if (json['home_area'] != null) {
+		data.homeArea = json['home_area']?.toString();
+	}
+	if (json['home_detail_address'] != null) {
+		data.homeDetailAddress = json['home_detail_address']?.toString();
+	}
+	if (json['home_detail'] != null) {
+		data.homeDetail = json['home_detail']?.toString();
+	}
+	if (json['home_requirement'] != null) {
+		data.homeRequirement = json['home_requirement']?.toString();
+	}
+	if (json['home_money'] != null) {
+		data.homeMoney = json['home_money']?.toInt();
+	}
+	if (json['home_img'] != null) {
+		data.homeImg = json['home_img']?.toString();
+	}
+	if (json['home_hot'] != null) {
+		data.homeHot = json['home_hot']?.toInt();
+	}
+	if (json['create_time'] != null) {
+		data.createTime = json['create_time']?.toString();
+	}
+	if (json['update_time'] != null) {
+		data.updateTime = json['update_time']?.toString();
+	}
+	if (json['delete_time'] != null) {
+		data.deleteTime = json['delete_time']?.toInt();
+	}
+	return data;
+}
+
+Map<String, dynamic> houseDetailDataToJson(HouseDetailData entity) {
+	final Map<String, dynamic> data = new Map<String, dynamic>();
+	data['id'] = entity.id;
+	data['username'] = entity.username;
+	data['home_name'] = entity.homeName;
+	data['home_province'] = entity.homeProvince;
+	data['home_city'] = entity.homeCity;
+	data['home_area'] = entity.homeArea;
+	data['home_detail_address'] = entity.homeDetailAddress;
+	data['home_detail'] = entity.homeDetail;
+	data['home_requirement'] = entity.homeRequirement;
+	data['home_money'] = entity.homeMoney;
+	data['home_img'] = entity.homeImg;
+	data['home_hot'] = entity.homeHot;
+	data['create_time'] = entity.createTime;
+	data['update_time'] = entity.updateTime;
+	data['delete_time'] = entity.deleteTime;
+	return data;
+}
