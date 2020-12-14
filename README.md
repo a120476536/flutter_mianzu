@@ -13,6 +13,9 @@ idea起源于蛋壳暴雷事件,
 最终被放鸽子,
 等等例子不胜枚举
 善待各路打工人,从免租开始.
+
+![效果预览](http://mianzu.eatandshow.com/support/mianzu.gif)
+
 ##### 代码地址
 ```
 码云 ： https://gitee.com/qobn/mianzu_flutter.git
@@ -98,3 +101,4 @@ https://gitee.com/qobn/mianzu_php.git
 # 觉得对你有帮助打赏作者一杯咖啡吧
 ![支付宝打赏](http://mianzu.eatandshow.com/support/alipay.jpg)
 ![微信打赏](http://mianzu.eatandshow.com/support/wechat.jpg)
+

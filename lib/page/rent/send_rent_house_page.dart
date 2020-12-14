@@ -148,7 +148,7 @@ class _SendRentHousePageState extends State<SendRentHousePage> {
       Toast.show('当前最多支持一张', context);
       return;
     }
-    var image = await ImagePicker.pickImage(source: ImageSource.camera,imageQuality: 90);
+    var image = await ImagePicker.pickImage(source: ImageSource.camera,maxWidth:100.0,maxHeight:100,imageQuality: 100);
 
     setState(() {
       _imgPath = image;
@@ -171,7 +171,7 @@ class _SendRentHousePageState extends State<SendRentHousePage> {
       Toast.show('当前最多支持一张', context);
       return;
     }
-    var image = await ImagePicker.pickImage(source: ImageSource.gallery,imageQuality: 90,maxWidth: 120.0,maxHeight: 120.0);
+    var image = await ImagePicker.pickImage(source: ImageSource.gallery,maxWidth:100.0,maxHeight:100,imageQuality: 100);
     setState(() {
       _imgPath = image;
       print("选择图片返回$_imgPath");

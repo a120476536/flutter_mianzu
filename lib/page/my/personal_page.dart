@@ -206,7 +206,7 @@ class _PersonalPageState extends State<PersonalPage> {
 
   /*拍照*/
   _takePhoto() async {
-    var image = await ImagePicker.pickImage(source: ImageSource.camera,imageQuality: 90);
+    var image = await ImagePicker.pickImage(source: ImageSource.camera,maxWidth:100.0,maxHeight:100.0,imageQuality: 100);
     // if(image!=null){
     //   imgs.clear();
     // }
@@ -233,7 +233,7 @@ class _PersonalPageState extends State<PersonalPage> {
     });
   }
   _choosePhoto() async{
-    var image = await ImagePicker.pickImage(source: ImageSource.gallery,imageQuality: 90);
+    var image = await ImagePicker.pickImage(source: ImageSource.gallery,maxWidth:100.0,maxHeight:100,imageQuality: 100);
     // if(image!=null){
     //   imgs.clear();
     // }
