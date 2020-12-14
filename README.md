@@ -15,7 +15,10 @@ idea起源于蛋壳暴雷事件,
 善待各路打工人,从免租开始.
 ##### 代码地址
 ```
-https://gitee.com/qobn/mianzu_flutter.git
+码云 ： https://gitee.com/qobn/mianzu_flutter.git
+github ： https://github.com/a120476536/flutter_mianzu.git
+
+Api接口文档地址：https://www.showdoc.com.cn/mianzu
 ```
 ##### 项目依赖
   - flutter_swiper: ^1.1.6
