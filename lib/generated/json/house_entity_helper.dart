@@ -2,13 +2,13 @@ import 'package:flutter_mianzu/entity/house/house_entity.dart';
 
 houseEntityFromJson(HouseEntity data, Map<String, dynamic> json) {
 	if (json['code'] != null) {
-		data.code = json['code']?.toString();
+		data.code = json['code'].toString();
 	}
 	if (json['data'] != null) {
 		data.data = new HouseData().fromJson(json['data']);
 	}
 	if (json['msg'] != null) {
-		data.msg = json['msg']?.toString();
+		data.msg = json['msg'].toString();
 	}
 	return data;
 }
@@ -25,7 +25,7 @@ Map<String, dynamic> houseEntityToJson(HouseEntity entity) {
 
 houseDataFromJson(HouseData data, Map<String, dynamic> json) {
 	if (json['house_id'] != null) {
-		data.houseId = json['house_id']?.toString();
+		data.houseId = json['house_id'].toString();
 	}
 	return data;
 }

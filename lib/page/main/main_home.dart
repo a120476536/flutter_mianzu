@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mianzu/constant/constant.dart';
+import 'package:flutter_mianzu/page/chat/chat_page.dart';
 import 'package:flutter_mianzu/page/main/main_page.dart';
 import 'package:flutter_mianzu/page/my/my_page.dart';
 import 'package:flutter_mianzu/page/rent/rent_page.dart';
@@ -28,6 +29,7 @@ class _MainHomePageState extends State<MainHomePage> {
     _list = [
       MainPage(),
       RentPage(),
+      ChatPage(),
       SquarePage(),
       MyPage(),
     ];
@@ -76,6 +78,11 @@ class _MainHomePageState extends State<MainHomePage> {
           BottomNavigationBarItem(
             icon: Icon(Icons.shopping_cart),
             activeIcon: Icon(Icons.shopping_cart),
+            title: Text('聊天室'),
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.shopping_cart),
+            activeIcon: Icon(Icons.shopping_cart),
             title: Text('广场'),
           ),
           BottomNavigationBarItem(
@@ -89,15 +96,18 @@ class _MainHomePageState extends State<MainHomePage> {
         selectedItemColor: Colors.deepOrangeAccent,
         unselectedItemColor: Colors.grey,
       ),
-      floatingActionButton: FloatingActionButton(onPressed: (){
-        if(_isOwer=="0"){///租客
-          Toast.show("租客", context);
-          NavigatorUtil.goSendRentHousePage(context,"0");
-        }else if(_isOwer=="1"){///房东
-          Toast.show("房东", context);
-          NavigatorUtil.goSendHousePage(context);
-        }
-      },backgroundColor: Colors.deepOrangeAccent,child:Text('寻租'),),
+      floatingActionButton: Visibility(
+        visible: _selectIndex!=2,
+        child: FloatingActionButton(onPressed: (){
+          if(_isOwer=="0"){///租客
+            Toast.show("租客", context);
+            NavigatorUtil.goSendRentHousePage(context,"0");
+          }else if(_isOwer=="1"){///房东
+            Toast.show("房东", context);
+            NavigatorUtil.goSendHousePage(context);
+          }
+        },backgroundColor: Colors.deepOrangeAccent,child:Text('寻租'),),
+      ),
     );
   }
 }

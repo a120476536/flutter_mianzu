@@ -2,7 +2,7 @@ import 'package:flutter_mianzu/entity/rent/find_rent_house_entity.dart';
 
 findRentHouseEntityFromJson(FindRentHouseEntity data, Map<String, dynamic> json) {
 	if (json['code'] != null) {
-		data.code = json['code']?.toString();
+		data.code = json['code'].toString();
 	}
 	if (json['data'] != null) {
 		data.data = new List<FindRentHouseData>();
@@ -11,7 +11,7 @@ findRentHouseEntityFromJson(FindRentHouseEntity data, Map<String, dynamic> json)
 		});
 	}
 	if (json['msg'] != null) {
-		data.msg = json['msg']?.toString();
+		data.msg = json['msg'].toString();
 	}
 	return data;
 }
@@ -28,49 +28,57 @@ Map<String, dynamic> findRentHouseEntityToJson(FindRentHouseEntity entity) {
 
 findRentHouseDataFromJson(FindRentHouseData data, Map<String, dynamic> json) {
 	if (json['id'] != null) {
-		data.id = json['id']?.toInt();
+		data.id = json['id'] is String
+				? int.tryParse(json['id'])
+				: json['id'].toInt();
 	}
 	if (json['rent_username'] != null) {
-		data.rentUsername = json['rent_username']?.toString();
+		data.rentUsername = json['rent_username'].toString();
 	}
 	if (json['rent_home_name'] != null) {
-		data.rentHomeName = json['rent_home_name']?.toString();
+		data.rentHomeName = json['rent_home_name'].toString();
 	}
 	if (json['rent_home_province'] != null) {
-		data.rentHomeProvince = json['rent_home_province']?.toString();
+		data.rentHomeProvince = json['rent_home_province'].toString();
 	}
 	if (json['rent_home_city'] != null) {
-		data.rentHomeCity = json['rent_home_city']?.toString();
+		data.rentHomeCity = json['rent_home_city'].toString();
 	}
 	if (json['rent_home_area'] != null) {
-		data.rentHomeArea = json['rent_home_area']?.toString();
+		data.rentHomeArea = json['rent_home_area'].toString();
 	}
 	if (json['rent_home_detail'] != null) {
-		data.rentHomeDetail = json['rent_home_detail']?.toString();
+		data.rentHomeDetail = json['rent_home_detail'].toString();
 	}
 	if (json['rent_home_detail_address'] != null) {
-		data.rentHomeDetailAddress = json['rent_home_detail_address']?.toString();
+		data.rentHomeDetailAddress = json['rent_home_detail_address'].toString();
 	}
 	if (json['rent_home_requirement'] != null) {
-		data.rentHomeRequirement = json['rent_home_requirement']?.toString();
+		data.rentHomeRequirement = json['rent_home_requirement'].toString();
 	}
 	if (json['rent_home_money'] != null) {
-		data.rentHomeMoney = json['rent_home_money']?.toInt();
+		data.rentHomeMoney = json['rent_home_money'] is String
+				? int.tryParse(json['rent_home_money'])
+				: json['rent_home_money'].toInt();
 	}
 	if (json['rent_user_img'] != null) {
-		data.rentUserImg = json['rent_user_img']?.toString();
+		data.rentUserImg = json['rent_user_img'].toString();
 	}
 	if (json['rent_home_hot'] != null) {
-		data.rentHomeHot = json['rent_home_hot']?.toInt();
+		data.rentHomeHot = json['rent_home_hot'] is String
+				? int.tryParse(json['rent_home_hot'])
+				: json['rent_home_hot'].toInt();
 	}
 	if (json['create_time'] != null) {
-		data.createTime = json['create_time']?.toString();
+		data.createTime = json['create_time'].toString();
 	}
 	if (json['update_time'] != null) {
-		data.updateTime = json['update_time']?.toString();
+		data.updateTime = json['update_time'].toString();
 	}
 	if (json['delete_time'] != null) {
-		data.deleteTime = json['delete_time']?.toInt();
+		data.deleteTime = json['delete_time'] is String
+				? int.tryParse(json['delete_time'])
+				: json['delete_time'].toInt();
 	}
 	return data;
 }

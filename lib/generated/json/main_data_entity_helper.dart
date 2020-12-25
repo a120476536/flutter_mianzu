@@ -2,13 +2,13 @@ import 'package:flutter_mianzu/entity/main/main_data_entity.dart';
 
 mainDataEntityFromJson(MainDataEntity data, Map<String, dynamic> json) {
 	if (json['code'] != null) {
-		data.code = json['code']?.toString();
+		data.code = json['code'].toString();
 	}
 	if (json['data'] != null) {
 		data.data = new MainDataData().fromJson(json['data']);
 	}
 	if (json['msg'] != null) {
-		data.msg = json['msg']?.toString();
+		data.msg = json['msg'].toString();
 	}
 	return data;
 }
@@ -52,31 +52,37 @@ Map<String, dynamic> mainDataDataToJson(MainDataData entity) {
 
 mainDataDataBannerFromJson(MainDataDataBanner data, Map<String, dynamic> json) {
 	if (json['id'] != null) {
-		data.id = json['id']?.toInt();
+		data.id = json['id'] is String
+				? int.tryParse(json['id'])
+				: json['id'].toInt();
 	}
 	if (json['type'] != null) {
-		data.type = json['type']?.toInt();
+		data.type = json['type'] is String
+				? int.tryParse(json['type'])
+				: json['type'].toInt();
 	}
 	if (json['title'] != null) {
-		data.title = json['title']?.toString();
+		data.title = json['title'].toString();
 	}
 	if (json['bannerurl'] != null) {
-		data.bannerurl = json['bannerurl']?.toString();
+		data.bannerurl = json['bannerurl'].toString();
 	}
 	if (json['detail'] != null) {
-		data.detail = json['detail']?.toString();
+		data.detail = json['detail'].toString();
 	}
 	if (json['target'] != null) {
-		data.target = json['target']?.toString();
+		data.target = json['target'].toString();
 	}
 	if (json['create_time'] != null) {
-		data.createTime = json['create_time']?.toString();
+		data.createTime = json['create_time'].toString();
 	}
 	if (json['update_time'] != null) {
-		data.updateTime = json['update_time']?.toString();
+		data.updateTime = json['update_time'].toString();
 	}
 	if (json['delete_time'] != null) {
-		data.deleteTime = json['delete_time']?.toInt();
+		data.deleteTime = json['delete_time'] is String
+				? int.tryParse(json['delete_time'])
+				: json['delete_time'].toInt();
 	}
 	return data;
 }
@@ -97,31 +103,43 @@ Map<String, dynamic> mainDataDataBannerToJson(MainDataDataBanner entity) {
 
 mainDataDataIconFromJson(MainDataDataIcon data, Map<String, dynamic> json) {
 	if (json['id'] != null) {
-		data.id = json['id']?.toInt();
+		data.id = json['id'] is String
+				? int.tryParse(json['id'])
+				: json['id'].toInt();
 	}
 	if (json['icon_type'] != null) {
-		data.iconType = json['icon_type']?.toInt();
+		data.iconType = json['icon_type'] is String
+				? int.tryParse(json['icon_type'])
+				: json['icon_type'].toInt();
 	}
 	if (json['icon_name'] != null) {
-		data.iconName = json['icon_name']?.toString();
+		data.iconName = json['icon_name'].toString();
 	}
 	if (json['icon_url'] != null) {
-		data.iconUrl = json['icon_url']?.toString();
+		data.iconUrl = json['icon_url'].toString();
 	}
 	if (json['icon_detail'] != null) {
-		data.iconDetail = json['icon_detail']?.toString();
+		data.iconDetail = json['icon_detail'].toString();
 	}
 	if (json['icon_hot'] != null) {
-		data.iconHot = json['icon_hot']?.toInt();
+		data.iconHot = json['icon_hot'] is String
+				? int.tryParse(json['icon_hot'])
+				: json['icon_hot'].toInt();
 	}
 	if (json['create_time'] != null) {
-		data.createTime = json['create_time']?.toInt();
+		data.createTime = json['create_time'] is String
+				? int.tryParse(json['create_time'])
+				: json['create_time'].toInt();
 	}
 	if (json['update_time'] != null) {
-		data.updateTime = json['update_time']?.toInt();
+		data.updateTime = json['update_time'] is String
+				? int.tryParse(json['update_time'])
+				: json['update_time'].toInt();
 	}
 	if (json['delete_time'] != null) {
-		data.deleteTime = json['delete_time']?.toInt();
+		data.deleteTime = json['delete_time'] is String
+				? int.tryParse(json['delete_time'])
+				: json['delete_time'].toInt();
 	}
 	return data;
 }

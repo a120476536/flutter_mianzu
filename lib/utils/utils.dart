@@ -1,8 +1,12 @@
 import 'package:flutter_mianzu/api/api.dart';
+import 'package:flutter_mianzu/constant/string_text.dart';
 
 class Utils {
   static int currentTimeMillis() {
     return new DateTime.now().millisecondsSinceEpoch;
+  }
+  static String getTime(int timeMillis) {
+    return DateTime.fromMillisecondsSinceEpoch(timeMillis).toString().substring(0,19);
   }
   static List<String> getSkill(String ids) {
     List<String> skills = List();

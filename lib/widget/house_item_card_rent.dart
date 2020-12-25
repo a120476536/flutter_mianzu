@@ -71,7 +71,7 @@ class _HouseItemCardRentState extends State<HouseItemCardRent> {
               Container(
                 padding: EdgeInsets.symmetric(vertical: 10),
                 child: Text(
-                  _findHouseData.rentHomeName,
+                  _findHouseData==null? "": _findHouseData.rentHomeName,
                   style: TextStyle(
                     fontSize: 18.0,
                     color: Colors.blue,

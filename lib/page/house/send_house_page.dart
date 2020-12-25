@@ -87,7 +87,7 @@ class _SendHousePageState extends State<SendHousePage> {
       itemExtent: ScreenUtil.instance.setHeight(80.0),
       itemBuilder: (item, list, index) {
         return Center(
-            child: Text(item,
+            child: Text(item==null?"":item,
                 maxLines: 1,
                 style: TextStyle(fontSize: ScreenUtil.instance.setSp(26.0))));
       },
@@ -191,8 +191,7 @@ class _SendHousePageState extends State<SendHousePage> {
       Toast.show('当前最多支持一张', context);
       return;
     }
-    var image = await ImagePicker.pickImage(source: ImageSource.camera,maxWidth:50.0,maxHeight:50,imageQuality: 80);
-
+    var image = await ImagePicker.pickImage(source: ImageSource.camera,imageQuality: 10);
     setState(() {
       _imgPath = image;
       print("选择图片返回$_imgPath");
@@ -214,7 +213,7 @@ class _SendHousePageState extends State<SendHousePage> {
       Toast.show('当前最多支持一张', context);
       return;
     }
-    var image = await ImagePicker.pickImage(source: ImageSource.gallery,maxWidth:50.0,maxHeight:50,imageQuality: 80);
+    var image = await ImagePicker.pickImage(source: ImageSource.gallery,imageQuality: 10);
     setState(() {
       _imgPath = image;
       print("选择图片返回$_imgPath");
@@ -224,7 +223,7 @@ class _SendHousePageState extends State<SendHousePage> {
           if(value!=null){
             imageBean = new ImageBean(),
             imageBean.file = _imgPath,
-            imageBean.name = "name"+value.toString() + Utils.currentTimeMillis().toString(),
+            imageBean.name = Utils.currentTimeMillis().toString(),
             imgs.add(imageBean),
           }
         });

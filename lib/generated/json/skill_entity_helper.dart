@@ -2,7 +2,7 @@ import 'package:flutter_mianzu/entity/skill_entity.dart';
 
 skillEntityFromJson(SkillEntity data, Map<String, dynamic> json) {
 	if (json['code'] != null) {
-		data.code = json['code']?.toString();
+		data.code = json['code'].toString();
 	}
 	if (json['data'] != null) {
 		data.data = new List<SkillData>();
@@ -11,7 +11,7 @@ skillEntityFromJson(SkillEntity data, Map<String, dynamic> json) {
 		});
 	}
 	if (json['msg'] != null) {
-		data.msg = json['msg']?.toString();
+		data.msg = json['msg'].toString();
 	}
 	return data;
 }
@@ -28,13 +28,17 @@ Map<String, dynamic> skillEntityToJson(SkillEntity entity) {
 
 skillDataFromJson(SkillData data, Map<String, dynamic> json) {
 	if (json['id'] != null) {
-		data.id = json['id']?.toInt();
+		data.id = json['id'] is String
+				? int.tryParse(json['id'])
+				: json['id'].toInt();
 	}
 	if (json['skill_name'] != null) {
-		data.skillName = json['skill_name']?.toString();
+		data.skillName = json['skill_name'].toString();
 	}
 	if (json['skill_type'] != null) {
-		data.skillType = json['skill_type']?.toInt();
+		data.skillType = json['skill_type'] is String
+				? int.tryParse(json['skill_type'])
+				: json['skill_type'].toInt();
 	}
 	if (json['isCheck'] != null) {
 		data.isCheck = json['isCheck'];

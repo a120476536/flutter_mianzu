@@ -2,13 +2,13 @@ import 'package:flutter_mianzu/entity/rent/rent_house_order_entity.dart';
 
 rentHouseOrderEntityFromJson(RentHouseOrderEntity data, Map<String, dynamic> json) {
 	if (json['code'] != null) {
-		data.code = json['code']?.toString();
+		data.code = json['code'].toString();
 	}
 	if (json['data'] != null) {
 		data.data = new RentHouseOrderData().fromJson(json['data']);
 	}
 	if (json['msg'] != null) {
-		data.msg = json['msg']?.toString();
+		data.msg = json['msg'].toString();
 	}
 	return data;
 }
@@ -25,7 +25,7 @@ Map<String, dynamic> rentHouseOrderEntityToJson(RentHouseOrderEntity entity) {
 
 rentHouseOrderDataFromJson(RentHouseOrderData data, Map<String, dynamic> json) {
 	if (json['rent_house_id'] != null) {
-		data.rentHouseId = json['rent_house_id']?.toString();
+		data.rentHouseId = json['rent_house_id'].toString();
 	}
 	return data;
 }

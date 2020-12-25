@@ -40,7 +40,7 @@ class ItemMyFuntion extends StatelessWidget {
                 Row(
                   children: [
                     Container(margin: EdgeInsets.only(left: 10.0,right: 5.0),child: Image.asset(IconData,width: 20.0,height: 20.0,)),
-                    Text(text,style: TextStyle(color: Colors.black38),),
+                    Text(text==null?"":text,style: TextStyle(color: Colors.black38),),
                   ],
                 ),
                 Icon(Icons.arrow_right),

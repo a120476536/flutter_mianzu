@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_mianzu/constant/constant.dart';
-import 'package:flutter_mianzu/entity/user/user_entity.dart';
+import 'package:flutter_mianzu/entity/user/user_new_entity.dart';
 import 'package:flutter_mianzu/router/navigator_util.dart';
 import 'package:flutter_mianzu/utils/event_bus.dart';
 import 'package:flutter_mianzu/utils/share_preference_utils.dart';
@@ -16,7 +16,7 @@ class MyPage extends StatefulWidget {
 
 class _MyPageState extends State<MyPage> {
   var _isOwer = "0";
-  UserEntity _userEntity;
+  UserNewEntity _userEntity;
   bool isLogin = false;
   @override
   void initState() {
@@ -32,8 +32,8 @@ class _MyPageState extends State<MyPage> {
 
     SharedPreferenceUtils.getShareData(Constant.userbean).then((value) => {
       if(value!=null){
+        _userEntity = UserNewEntity().fromJson(json.decode(value.toString(),),),
         setState(() {
-          _userEntity = UserEntity().fromJson(json.decode(value.toString(),),);
           if(_userEntity.code=="0"){
             isLogin = true;
           }
@@ -123,7 +123,7 @@ class _MyPageState extends State<MyPage> {
                       },
                       child: Padding(
                         padding: const EdgeInsets.all(8.0),
-                        child: isLogin?Text(_userEntity.data.username):Text("去登陆"),
+                        child: isLogin?Text(_userEntity?.data?.username?? 'default'):Text("去登陆"),
                       ),
                     ),
                     isLogin?InkWell(onTap: (){
@@ -131,7 +131,7 @@ class _MyPageState extends State<MyPage> {
                         SharedPreferenceUtils.removeData();
                         isLogin = false;
                       });
-                    },child: Text('退出登录')):Text(''),
+                    },child: Text('退出登录')):Text('de'),
                   ],
                 ),
               ),

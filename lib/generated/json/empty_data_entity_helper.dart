@@ -2,10 +2,10 @@ import 'package:flutter_mianzu/entity/empty_data_entity.dart';
 
 emptyDataEntityFromJson(EmptyDataEntity data, Map<String, dynamic> json) {
 	if (json['code'] != null) {
-		data.code = json['code']?.toString();
+		data.code = json['code'].toString();
 	}
 	if (json['msg'] != null) {
-		data.msg = json['msg']?.toString();
+		data.msg = json['msg'].toString();
 	}
 	return data;
 }

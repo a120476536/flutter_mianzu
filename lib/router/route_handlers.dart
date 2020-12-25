@@ -1,5 +1,6 @@
 import 'package:fluro/fluro.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_mianzu/page/chat/chat_page.dart';
 import 'package:flutter_mianzu/page/house/rent_find_house_detail.dart';
 import 'package:flutter_mianzu/page/house/send_house_page.dart';
 import 'package:flutter_mianzu/page/login/login_page.dart';
@@ -65,4 +66,7 @@ var likeHousePageHandler = Handler(handlerFunc: (BuildContext context, Map<Strin
 var rentSendHouseDetailHandler = Handler(handlerFunc: (BuildContext context, Map<String, List<String>> parameters) {
   var id = parameters["id"].first;
   return RentSendHouseDetail(id.toString().trim());
+});
+var chatPageHandler = Handler(handlerFunc: (BuildContext context, Map<String, List<String>> parameters) {
+  return ChatPage();
 });

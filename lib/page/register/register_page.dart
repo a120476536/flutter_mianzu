@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter_mianzu/api/api.dart';
 import 'package:flutter_mianzu/constant/constant.dart';
-import 'package:flutter_mianzu/entity/user/user_entity.dart';
+import 'package:flutter_mianzu/entity/user/user_new_entity.dart';
 import 'package:flutter_mianzu/http/http_util.dart';
 import 'package:flutter_mianzu/router/navigator_util.dart';
 import 'package:flutter_mianzu/utils/share_preference_utils.dart';
@@ -18,7 +18,7 @@ class _RegisterPageState extends State<RegisterPage> {
   TextEditingController _accountController = TextEditingController();
   TextEditingController _pwdController = TextEditingController();
   TextEditingController _idCardController = TextEditingController();
-  UserEntity _userEntity;
+  UserNewEntity _userEntity;
   @override
   void initState() {
     // TODO: implement initState
@@ -45,7 +45,7 @@ class _RegisterPageState extends State<RegisterPage> {
     HttpUtil.instance.post(Api.REGISTER_URL,parameters: map).then((value) => {
       print("注册结果$value"),
       if(value!=null){
-        _userEntity = UserEntity().fromJson(json.decode(value.toString())),
+        _userEntity = UserNewEntity().fromJson(json.decode(value.toString())),
         if(_userEntity.code=="0"){
           SharedPreferenceUtils.saveShareData(Constant.username, _userEntity.data.username),
           Navigator.of(context).pop(),

@@ -7,7 +7,7 @@ import 'package:flutter_mianzu/api/api.dart';
 import 'package:flutter_mianzu/constant/constant.dart';
 import 'package:flutter_mianzu/entity/image_bean.dart';
 import 'package:flutter_mianzu/entity/user/update_user_entity.dart';
-import 'package:flutter_mianzu/entity/user/user_entity.dart';
+import 'package:flutter_mianzu/entity/user/user_new_entity.dart';
 import 'package:flutter_mianzu/http/http_util.dart';
 import 'package:flutter_mianzu/router/navigator_util.dart';
 import 'package:flutter_mianzu/utils/share_preference_utils.dart';
@@ -29,7 +29,7 @@ class _PersonalPageState extends State<PersonalPage> {
   TextEditingController _idCardController = TextEditingController();
   List<ImageBean> imgs = List();
   File _imgPath;
-  UserEntity _userEntity;
+  UserNewEntity _userEntity;
   UpdateUserEntity _updateUserEntity;
   @override
   void initState() {
@@ -46,8 +46,8 @@ class _PersonalPageState extends State<PersonalPage> {
          print('获取用户信息结果:$valueBean'),
          if(valueBean!=null){
           setState(() {
-               _userEntity = UserEntity().fromJson(json.decode(valueBean.toString()));
-               _nickNameController.text = _userEntity.data.nickName;
+               _userEntity = UserNewEntity().fromJson(json.decode(valueBean.toString()));
+               _nickNameController.text = _userEntity.data.nickname;
                _idCardController.text = _userEntity.data.idcard;
           }),
          }

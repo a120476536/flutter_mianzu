@@ -45,6 +45,8 @@ dependencies:
   flutter_bmfmap:  ^1.0.2
   flutter_bmfutils: ^1.0.2
   image_picker: ^0.6.7+14
+  flutter_image_compress: ^0.7.0
+  web_socket_channel: ^1.1.0
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.

@@ -58,4 +58,7 @@ class NavigatorUtil{
   static goRentSendHouseDetail(BuildContext context,String id) {
     Application.router.navigateTo(context, Routers.rentSendHouseDetail+"?id=${Uri.encodeComponent(id)}", transition: TransitionType.inFromRight);
   }
+  static goChatPage(BuildContext context) {
+    Application.router.navigateTo(context, Routers.chatPage, transition: TransitionType.inFromRight);
+  }
 }

@@ -1,8 +1,8 @@
 class Api{
-  // static const String IMG_URL = 'http://192.168.1.46/';
-  // static const String BASE_URL = 'http://192.168.1.46';
-  static const String IMG_URL = 'http://mianzu.eatandshow.com/';
-  static const String BASE_URL = 'http://mianzu.eatandshow.com';
+  static const String IMG_URL = 'http://192.168.1.47/';
+  static const String BASE_URL = 'http://192.168.1.47';
+  // static const String IMG_URL = 'http://mianzu.eatandshow.com/';
+  // static const String BASE_URL = 'http://mianzu.eatandshow.com';
   static const String REGISTER_URL=BASE_URL+'/admin.php/Admin/register';//用户注册
   static const String LOGIN_URL=BASE_URL+'/admin.php/Admin/tologin';//用户登录
   static const String UPDATEUSER=BASE_URL+'/admin.php/Admin/updateuser';//更新用户信息

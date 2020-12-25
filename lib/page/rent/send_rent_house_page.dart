@@ -127,7 +127,7 @@ class _SendRentHousePageState extends State<SendRentHousePage> {
       itemExtent: ScreenUtil.instance.setHeight(80.0),
       itemBuilder: (item, list, index) {
         return Center(
-            child: Text(item,
+            child: Text(item==null?"":item,
                 maxLines: 1,
                 style: TextStyle(fontSize: ScreenUtil.instance.setSp(26.0))));
       },

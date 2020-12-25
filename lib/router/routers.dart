@@ -18,6 +18,7 @@ class Routers{
   static String personalPage ="/personalPage";
   static String likeHousePage ="/likeHousePage";
   static String rentSendHouseDetail ="/rentSendHouseDetail";
+  static String chatPage ="/chatPage";
 
   static void configureRoutes(FluroRouter router) {
     router.notFoundHandler = Handler(handlerFunc:
@@ -41,5 +42,6 @@ class Routers{
     router.define(personalPage, handler: personalPageHandler);
     router.define(likeHousePage, handler: likeHousePageHandler);
     router.define(rentSendHouseDetail, handler: rentSendHouseDetailHandler);
+    router.define(chatPage, handler: chatPageHandler);
   }
 }

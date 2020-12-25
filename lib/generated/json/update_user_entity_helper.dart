@@ -2,13 +2,13 @@ import 'package:flutter_mianzu/entity/user/update_user_entity.dart';
 
 updateUserEntityFromJson(UpdateUserEntity data, Map<String, dynamic> json) {
 	if (json['code'] != null) {
-		data.code = json['code']?.toString();
+		data.code = json['code'].toString();
 	}
 	if (json['data'] != null) {
 		data.data = new UpdateUserData().fromJson(json['data']);
 	}
 	if (json['msg'] != null) {
-		data.msg = json['msg']?.toString();
+		data.msg = json['msg'].toString();
 	}
 	return data;
 }
@@ -25,16 +25,18 @@ Map<String, dynamic> updateUserEntityToJson(UpdateUserEntity entity) {
 
 updateUserDataFromJson(UpdateUserData data, Map<String, dynamic> json) {
 	if (json['isUpdateSuccess'] != null) {
-		data.isUpdateSuccess = json['isUpdateSuccess']?.toInt();
+		data.isUpdateSuccess = json['isUpdateSuccess'] is String
+				? int.tryParse(json['isUpdateSuccess'])
+				: json['isUpdateSuccess'].toInt();
 	}
 	if (json['nickname'] != null) {
-		data.nickname = json['nickname']?.toString();
+		data.nickname = json['nickname'].toString();
 	}
 	if (json['idcard'] != null) {
-		data.idcard = json['idcard']?.toString();
+		data.idcard = json['idcard'].toString();
 	}
 	if (json['avatar'] != null) {
-		data.avatar = json['avatar']?.toString();
+		data.avatar = json['avatar'].toString();
 	}
 	return data;
 }
