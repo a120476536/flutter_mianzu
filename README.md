@@ -99,5 +99,5 @@ Api接口文档地址：https://www.showdoc.com.cn/mianzu
 https://gitee.com/qobn/mianzu_php.git
 ```
 # 觉得对你有帮助打赏作者来维持下服务器吧
-![打赏](http://mianzu.eatandshow.com/support/pay.png)
+![打赏](https://github.com/a120476536/flutter_mianzu/blob/master/gif/pay.jpg?raw=true)
 
