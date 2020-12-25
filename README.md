@@ -15,6 +15,7 @@ idea起源于蛋壳暴雷事件,
 善待各路打工人,从免租开始.
 
 ![效果预览](https://github.com/a120476536/flutter_mianzu/blob/master/gif/mianzu-min.gif?raw=true)
+![新增聊天室功能](https://github.com/a120476536/flutter_mianzu/blob/master/gif/chatgif-min.gif?raw=true)
 
 ##### 代码地址
 ```
