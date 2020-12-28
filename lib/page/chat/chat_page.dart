@@ -51,6 +51,14 @@ class _ChatPageState extends State<ChatPage> {
   }
 
   _sendData(data) {
+    try {
+      print("${channel==null} ${channel.closeCode} ${channel.closeReason} ");
+    } catch (e) {
+      print(e);
+    }
+    if(channel!=null && channel.closeCode==1005){
+      _socket();
+    }
     if(data==null||data==""){
       ToastUtils.showFlutterToast("发送内容不能为空");
       return;
