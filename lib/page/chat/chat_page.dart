@@ -39,7 +39,7 @@ class _ChatPageState extends State<ChatPage> {
   _socket() async {
     channel = IOWebSocketChannel.connect("ws://49.232.210.34:9501");
     channel.stream.listen((message) {
-      print("flutter接收到$message");
+      print("flutter接收到  $message}");
       _entity = ChatEntity().fromJson(json.decode(message.toString()));
       print('转对象${_entity.content}');
       setState(() {
@@ -52,43 +52,46 @@ class _ChatPageState extends State<ChatPage> {
 
   _sendData(data) {
     try {
-      print("${channel==null} ${channel.closeCode} ${channel.closeReason} ");
+      print("${channel == null} ${channel.closeCode} ${channel.closeReason} ");
     } catch (e) {
       print(e);
     }
-    if(channel!=null && channel.closeCode==1005){
+    if (channel != null && channel.closeCode == 1005) {
       _socket();
     }
-    if(data==null||data==""){
+    if (data == null || data == "") {
       ToastUtils.showFlutterToast("发送内容不能为空");
       return;
     }
     ChatEntity send;
     SharedPreferenceUtils.getShareData(Constant.username).then((value) => {
           send = new ChatEntity(),
-          send.username = value,
-          send.content = data,
-          send.sendTime = Utils.currentTimeMillis().toString(),
-          channel.sink.add(json.encode(send)),
-          _sendNoticeController.text = "",
-          setState(() {
-            username = value;
-            isJumpBottom = true;
-          }),
+          if (value != null)
+            {
+              send.username = value,
+              send.content = data,
+              send.sendTime = Utils.currentTimeMillis().toString(),
+              channel.sink.add(json.encode(send)),
+              _sendNoticeController.text = "",
+              setState(() {
+                username = value;
+                isJumpBottom = true;
+              }),
+            }
+          else
+            {ToastUtils.showFlutterToast("请先登录")}
         });
   }
 
-  @override
-  void didUpdateWidget(covariant ChatPage oldWidget) {
-    // TODO: implement didUpdateWidget
-    super.didUpdateWidget(oldWidget);
-  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text('聊天室'),
         centerTitle: true,
+        actions: [
+          Container(alignment: Alignment.center,margin: EdgeInsets.only(right: 10.0),child: Text(_entity.count!=null?'当前在线人数 ${_entity.count} 人':"当前在线人数 0 人"),)
+        ],
       ),
       body: GestureDetector(
         behavior: HitTestBehavior.translucent,

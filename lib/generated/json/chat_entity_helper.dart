@@ -10,6 +10,9 @@ chatEntityFromJson(ChatEntity data, Map<String, dynamic> json) {
 	if (json['sendTime'] != null) {
 		data.sendTime = json['sendTime'].toString();
 	}
+	if (json['count'] != null) {
+		data.count = json['count'].toString();
+	}
 	return data;
 }
 
@@ -18,5 +21,6 @@ Map<String, dynamic> chatEntityToJson(ChatEntity entity) {
 	data['username'] = entity.username;
 	data['content'] = entity.content;
 	data['sendTime'] = entity.sendTime;
+	data['count'] = entity.count;
 	return data;
 }

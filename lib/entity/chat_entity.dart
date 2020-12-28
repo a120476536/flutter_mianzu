@@ -4,4 +4,5 @@ class ChatEntity with JsonConvert<ChatEntity> {
 	String username;
 	String content;
 	String sendTime;
+	String count;
 }
