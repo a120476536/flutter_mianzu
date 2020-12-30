@@ -31,6 +31,8 @@ import 'package:flutter_mianzu/entity/house/house_detail_entity.dart';
 import 'package:flutter_mianzu/generated/json/house_detail_entity_helper.dart';
 import 'package:flutter_mianzu/entity/rent/item_rent_people_entity.dart';
 import 'package:flutter_mianzu/generated/json/item_rent_people_entity_helper.dart';
+import 'package:flutter_mianzu/entity/update/update_entity.dart';
+import 'package:flutter_mianzu/generated/json/update_entity_helper.dart';
 
 class JsonConvert<T> {
 	T fromJson(Map<String, dynamic> json) {
@@ -98,7 +100,11 @@ class JsonConvert<T> {
 			case ItemRentPeopleEntity:
 				return itemRentPeopleEntityFromJson(data as ItemRentPeopleEntity, json) as T;
 			case ItemRentPeopleData:
-				return itemRentPeopleDataFromJson(data as ItemRentPeopleData, json) as T;    }
+				return itemRentPeopleDataFromJson(data as ItemRentPeopleData, json) as T;
+			case UpdateEntity:
+				return updateEntityFromJson(data as UpdateEntity, json) as T;
+			case UpdateData:
+				return updateDataFromJson(data as UpdateData, json) as T;    }
     return data as T;
   }
 
@@ -160,6 +166,10 @@ class JsonConvert<T> {
 				return itemRentPeopleEntityToJson(data as ItemRentPeopleEntity);
 			case ItemRentPeopleData:
 				return itemRentPeopleDataToJson(data as ItemRentPeopleData);
+			case UpdateEntity:
+				return updateEntityToJson(data as UpdateEntity);
+			case UpdateData:
+				return updateDataToJson(data as UpdateData);
 			}
 			return data as T;
 		}
@@ -222,6 +232,10 @@ class JsonConvert<T> {
 			return ItemRentPeopleEntity().fromJson(json);
 		}	else if(type == (ItemRentPeopleData).toString()){
 			return ItemRentPeopleData().fromJson(json);
+		}	else if(type == (UpdateEntity).toString()){
+			return UpdateEntity().fromJson(json);
+		}	else if(type == (UpdateData).toString()){
+			return UpdateData().fromJson(json);
 		}	
 		return null;
 	}
@@ -250,7 +264,7 @@ class JsonConvert<T> {
 			return data.map<HouseData>((e) => HouseData().fromJson(e)).toList() as M;
 		}	else if(List<ChatEntity>() is M){
 			return data.map<ChatEntity>((e) => ChatEntity().fromJson(e)).toList() as M;
-		} else if(List<LikeHouseEntity>() is M){
+		}	else if(List<LikeHouseEntity>() is M){
 			return data.map<LikeHouseEntity>((e) => LikeHouseEntity().fromJson(e)).toList() as M;
 		}	else if(List<LikeHouseData>() is M){
 			return data.map<LikeHouseData>((e) => LikeHouseData().fromJson(e)).toList() as M;
@@ -284,6 +298,10 @@ class JsonConvert<T> {
 			return data.map<ItemRentPeopleEntity>((e) => ItemRentPeopleEntity().fromJson(e)).toList() as M;
 		}	else if(List<ItemRentPeopleData>() is M){
 			return data.map<ItemRentPeopleData>((e) => ItemRentPeopleData().fromJson(e)).toList() as M;
+		}	else if(List<UpdateEntity>() is M){
+			return data.map<UpdateEntity>((e) => UpdateEntity().fromJson(e)).toList() as M;
+		}	else if(List<UpdateData>() is M){
+			return data.map<UpdateData>((e) => UpdateData().fromJson(e)).toList() as M;
 		}
 		return null;
 	}

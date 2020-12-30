@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_mianzu/api/api.dart';
 import 'package:flutter_mianzu/constant/constant.dart';
+import 'package:flutter_mianzu/http/http_util.dart';
 import 'package:flutter_mianzu/page/chat/chat_page.dart';
 import 'package:flutter_mianzu/page/main/main_page.dart';
 import 'package:flutter_mianzu/page/my/my_page.dart';
@@ -33,13 +35,24 @@ class _MainHomePageState extends State<MainHomePage> {
       SquarePage(),
       MyPage(),
     ];
-
+    // _checkUpdate();
     SharedPreferenceUtils.getShareData(Constant.is_ower).then((value) => {
       if(value!=null){
         setState(() {
           _isOwer = value;
         }),
       }
+    });
+  }
+  _checkUpdate(){
+    HttpUtil.instance.get(Api.CHECK_UPDATE).then((value) => {
+      print("更新$value"),
+      if (value != null)
+        {
+          setState(() {
+
+          }),
+        }
     });
   }
   void _onItem(int index) {
@@ -71,18 +84,18 @@ class _MainHomePageState extends State<MainHomePage> {
             title: Text('首页'),
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.category),
-            activeIcon: Icon(Icons.category),
+            icon: Icon(Icons.find_in_page_sharp),
+            activeIcon: Icon(Icons.find_in_page_sharp),
             title: Text('寻租'),
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.shopping_cart),
-            activeIcon: Icon(Icons.shopping_cart),
+            icon: Icon(Icons.chat),
+            activeIcon: Icon(Icons.chat),
             title: Text('聊天室'),
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.shopping_cart),
-            activeIcon: Icon(Icons.shopping_cart),
+            icon: Icon(Icons.crop_square),
+            activeIcon: Icon(Icons.crop_square),
             title: Text('广场'),
           ),
           BottomNavigationBarItem(

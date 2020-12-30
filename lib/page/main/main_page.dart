@@ -7,7 +7,9 @@ import 'package:flutter_mianzu/entity/banner/banner_bean.dart';
 import 'package:flutter_mianzu/entity/house/find_house_entity.dart';
 import 'package:flutter_mianzu/entity/main/main_data_entity.dart';
 import 'package:flutter_mianzu/entity/rent/find_rent_house_entity.dart';
+import 'package:flutter_mianzu/entity/update/update_entity.dart';
 import 'package:flutter_mianzu/http/http_util.dart';
+import 'package:flutter_mianzu/page/update/update_dialog.dart';
 import 'package:flutter_mianzu/router/navigator_util.dart';
 import 'package:flutter_mianzu/widget/empty_view.dart';
 import 'package:flutter_mianzu/widget/item_main_grid.dart';
@@ -16,6 +18,7 @@ import 'package:flutter_mianzu/widget/new_send_rent_house.dart';
 import 'package:flutter_mianzu/widget/swiper_view.dart';
 import 'package:flutter_mianzu/widget/toast_utils.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:package_info/package_info.dart';
 //首页
 class MainPage extends StatefulWidget {
   @override
@@ -31,6 +34,7 @@ class _MainPageState extends State<MainPage> {
   List<FindRentHouseData> _allFindRentHouseData = List();
 
   MainDataEntity _mainDataEntity;
+  UpdateEntity _updateEntity;
   @override
   void initState() {
     // TODO: implement initState
@@ -46,6 +50,30 @@ class _MainPageState extends State<MainPage> {
     _findMain();
     _findHothouse();
     _findRentHothouse();
+    _checkUpdate(context);
+  }
+
+  _checkUpdate(context) async {
+    PackageInfo packageInfo = await PackageInfo.fromPlatform();
+    print('版本:${packageInfo.version}');
+    int currentV;
+    int serverV;
+    HttpUtil.instance.get(Api.CHECK_UPDATE).then((value) => {
+      print("更新$value"),
+      if (value != null)
+        {
+          _updateEntity = UpdateEntity().fromJson(json.decode(value.toString())),
+          serverV = int.parse(_updateEntity.data.androidVersion.replaceAll(".", "")),
+          currentV = int.parse(packageInfo.version.replaceAll(".", "")),
+          print('当前版本 $currentV  服务器返回版本 $serverV'),
+          if(serverV>currentV){
+            print('serverV>currentV'),
+            showDialog(context: context,builder: (context) => UpdateDialog(updateEntity: _updateEntity,),),
+          }else{
+            print('serverV<=currentV')
+          }
+        }
+    });
   }
   _findMain(){
     HttpUtil.instance.get(Api.MAINCONTENT).then((value) => {
@@ -151,7 +179,7 @@ class _MainPageState extends State<MainPage> {
           // backgroundColor: Color.fromRGBO(12, 142, 255, 1),
           elevation: 0,
         ),
-        body: _mainDataEntity==null?EmptyView():EasyRefresh(
+        body: EasyRefresh(
           // emptyWidget: EmptyView(),
             onRefresh: () async{
               setState(() {
@@ -177,10 +205,10 @@ class _MainPageState extends State<MainPage> {
                   Padding(
                     padding: EdgeInsets.only(top: 10.0),
                   ),
-                  ItemMainGrid(_mainDataEntity),//这里可以根据角色切换,已保证发布求租信息还是发布房源信息---暂时未搞
-                  NewSendHouse(_allFindHouseData),
-                  NewSendRentHouse(_allFindRentHouseData),
-                  Container(height: 80.0,alignment: Alignment.center,child: Text('---------没有更多了---------',style: TextStyle(color: Colors.grey),),),
+                  _mainDataEntity==null?EmptyView():ItemMainGrid(_mainDataEntity),//这里可以根据角色切换,已保证发布求租信息还是发布房源信息---暂时未搞
+                  _allFindHouseData==null?EmptyView():NewSendHouse(_allFindHouseData),
+                  _allFindRentHouseData==null?EmptyView():NewSendRentHouse(_allFindRentHouseData),
+                  Container(height: 80.0,alignment: Alignment.center,child: Text(' ^^^^^^^^^ 没有更多 ^^^^^^^^^ ',style: TextStyle(color: Colors.grey),),),
                 ],
               ),
             ),),

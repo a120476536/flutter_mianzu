@@ -1,8 +1,8 @@
 class Api{
-  // static const String IMG_URL = 'http://192.168.1.47/';
-  // static const String BASE_URL = 'http://192.168.1.47';
-  static const String IMG_URL = 'http://mianzu.eatandshow.com/';
-  static const String BASE_URL = 'http://mianzu.eatandshow.com';
+  static const String IMG_URL = 'http://192.168.1.46/';
+  static const String BASE_URL = 'http://192.168.1.46';
+  // static const String IMG_URL = 'http://mianzu.eatandshow.com/';
+  // static const String BASE_URL = 'http://mianzu.eatandshow.com';
   static const String REGISTER_URL=BASE_URL+'/admin.php/Admin/register';//用户注册
   static const String LOGIN_URL=BASE_URL+'/admin.php/Admin/tologin';//用户登录
   static const String UPDATEUSER=BASE_URL+'/admin.php/Admin/updateuser';//更新用户信息
@@ -22,4 +22,5 @@ class Api{
   static const String LIKERENTUSER=BASE_URL+'/admin.php/Rent_House/likeRentUser';//是否喜欢求租者
   static const String ALL_SKILL=BASE_URL+'/admin.php/Skill/skill';//所有租房技能标签
   static const String FEEDBACK=BASE_URL+'/admin.php/Feed_Back/feedback';//反馈
+  static const String CHECK_UPDATE=BASE_URL+'/admin.php/Main_Home/check_update';//app检查更新
 }

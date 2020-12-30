@@ -1,8 +1,10 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_mianzu/api/api.dart';
 import 'package:flutter_mianzu/constant/constant.dart';
 import 'package:flutter_mianzu/entity/user/user_new_entity.dart';
+import 'package:flutter_mianzu/http/http_util.dart';
 import 'package:flutter_mianzu/router/navigator_util.dart';
 import 'package:flutter_mianzu/utils/event_bus.dart';
 import 'package:flutter_mianzu/utils/share_preference_utils.dart';
@@ -131,7 +133,7 @@ class _MyPageState extends State<MyPage> {
                         SharedPreferenceUtils.removeData();
                         isLogin = false;
                       });
-                    },child: Text('退出登录')):Text('de'),
+                    },child: Text('退出登录')):Text(''),
                   ],
                 ),
               ),
@@ -144,6 +146,11 @@ class _MyPageState extends State<MyPage> {
           ItemMyFuntion("images/icon_heart.png","我的意向",1),
           ItemMyFuntion("images/icon_feedback.png","意见反馈",2),
           ItemMyFuntion("images/icon_about.png","关于我们",3),
+          ItemMyFuntion("images/icon_about.png","检查升级",4),
+          // InkWell(onTap: (){
+          //   _checkUpdate();
+          // },child: Text('检查升级'),),
+
           // ItemMyFuntion(Icons.account_box_outlined,"系统设置",4),
           // SliverFixedExtentList(
           //   itemExtent: 50,

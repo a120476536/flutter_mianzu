@@ -23,31 +23,35 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  flutter_swiper: ^1.1.6
-  dio: ^3.0.10
+  flutter_swiper: ^1.1.6 # banner轮播
+  dio: ^3.0.10 # 网络框架
   flutter_spinkit: ^3.1.0
   #  pull_to_refresh: ^1.4.7
-  event_bus: ^1.1.0
+  event_bus: ^1.1.0 # 消息通知
   flutter_html: ^0.10.4
-  flutter_screenutil: ^0.5.3
-  fluttertoast: ^3.1.0
-  shared_preferences: ^0.5.3+4
-  fluro: ^1.6.3
+  flutter_screenutil: ^0.5.3 # 屏幕适配
+  fluttertoast: ^3.1.0 # 吐司
+  shared_preferences: ^0.5.3+4 # sp
+  fluro: ^1.6.3 # 路由
   provider: ^3.0.0+1
-  city_pickers: ^0.1.30
-  flutter_easyrefresh: ^2.0.3
-  flutter_webview_plugin: ^0.3.11
+  city_pickers: ^0.1.30 # 城市选择
+  flutter_easyrefresh: ^2.0.3 # 上下拉刷新
+  flutter_webview_plugin: ^0.3.11 # webview插件
   cached_network_image: ^2.0.0
   flutter_stack_trace: ^1.0.1
-  toast: ^0.1.5
-  share: ^0.6.5+4
+  toast: ^0.1.5 # 吐司
+  share: ^0.6.5+4 # 分享
   flutter_bmflocation: ^1.0.2
   flutter_bmfmap:  ^1.0.2
   flutter_bmfutils: ^1.0.2
-  image_picker: ^0.6.7+14
-  flutter_image_compress: ^0.7.0
-  web_socket_channel: ^1.1.0
-
+  image_picker: ^0.6.7+14 # 图片选择
+  flutter_image_compress: ^0.7.0 # 图片压缩
+  web_socket_channel: ^1.1.0 # websocket
+  package_info: ^0.4.3+2 #获取本地项目各类信息 例如版本
+  permission_handler: ^5.0.1+1 # 权限处理
+  path_provider: ^1.6.24 # 获取app路径
+  flutter_downloader: ^1.5.2 # flutter 下载插件
+  install_apk_plugin: ^1.0.1
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.0

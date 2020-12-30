@@ -34,6 +34,11 @@ class _ChatPageState extends State<ChatPage> {
       //这里滚动并没有达到listview 最大高度，应该是滚动到最后一个item的顶部 ，没有到底部
       // _controller.animateTo(_controller.position.maxScrollExtent,duration: Duration(milliseconds: 1000),curve: Curves.easeIn);
     });
+    // ChatEntity _firstChatEntiry = new ChatEntity();
+    // _firstChatEntiry.username="";
+    // _firstChatEntiry.content="";
+    // _firstChatEntiry.sendTime=Utils.currentTimeMillis().toString();
+    _allListNotice.add(new ChatEntity());
   }
 
   _socket() async {
@@ -90,7 +95,7 @@ class _ChatPageState extends State<ChatPage> {
         title: Text('聊天室'),
         centerTitle: true,
         actions: [
-          Container(alignment: Alignment.center,margin: EdgeInsets.only(right: 10.0),child: Text(_entity.count!=null?'当前在线人数 ${_entity.count} 人':"当前在线人数 0 人"),)
+          _entity==null||_entity.count==null?Text(''):Container(alignment: Alignment.center,margin: EdgeInsets.only(right: 10.0),child: Text(_entity.count!=null?'当前在线人数 ${_entity.count} 人':"当前在线人数 0 人"),)
         ],
       ),
       body: GestureDetector(
@@ -111,6 +116,8 @@ class _ChatPageState extends State<ChatPage> {
                       }else{
                         if(index == _allListNotice.length){
                           return Container(height: 50.0,);
+                        }else if(index==0){
+                          return Container(alignment: Alignment.center,width: double.infinity,child: Text('目前仅支持文字聊天,图片等后续增加'),);
                         }else{
                           ChatEntity _cutter = _allListNotice[index];
                           bool isSelf = false;

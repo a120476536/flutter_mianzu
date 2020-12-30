@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:package_info/package_info.dart';
 ///关于我们
 class SupportPage extends StatefulWidget {
   @override
@@ -6,6 +7,19 @@ class SupportPage extends StatefulWidget {
 }
 
 class _SupportPageState extends State<SupportPage> {
+  var _version;
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    _getVersion();
+  }
+  _getVersion() async{
+    PackageInfo packageInfo = await PackageInfo.fromPlatform();
+    setState(() {
+      _version = packageInfo.version;
+    });
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -110,6 +124,17 @@ class _SupportPageState extends State<SupportPage> {
           Divider(
             color: Colors.grey,
             height: 1.0,
+          ),
+          Container(
+            padding: EdgeInsets.only(left: 10.0, right: 10.0),
+            height: 50.0,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text('版本号'),
+                Text(_version?? '0'),
+              ],
+            ),
           ),
         ],
       ),

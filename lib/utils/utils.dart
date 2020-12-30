@@ -82,4 +82,5 @@ class Utils {
       return Api.IMG_URL+imgUrl.replaceAll("\\", "/");
     }
   }
+
 }

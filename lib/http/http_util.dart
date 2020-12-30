@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-
+typedef OnProgessBack(double current);
 var dio;
 class HttpUtil {
   // 工厂模式
@@ -25,8 +25,8 @@ class HttpUtil {
     HttpUtil() {
     BaseOptions options = BaseOptions(
       headers: getHeaders(),
-      connectTimeout: 5000,
-      receiveTimeout: 5000,
+      connectTimeout: 5000*50,
+      receiveTimeout: 5000*50,
     );
     dio = new Dio(options);
     dio.interceptors.add(InterceptorsWrapper(onRequest: (RequestOptions options) async {
@@ -56,7 +56,27 @@ class HttpUtil {
       print("message =${error.message}");
     }));
   }
-
+  Future downLoad(String url,String savePath,{Options options,ProgressCallback onReceiveProgress}) async{
+    double currentProgress =0.0;
+    Response response;
+    if(url==null){
+      print("下载地址不能为空");
+      return;
+    }
+    if(savePath==null){
+      print("保存地址不能为空");
+      return;
+    }
+    response = await dio.download(url, "$savePath/mianzu.apk",onReceiveProgress:(received, total){
+      if (total != -1) {
+        ///当前下载的百分比例
+        print((received / total * 100).toStringAsFixed(0) + "%");
+        // CircularProgressIndicator(value: currentProgress,) 进度 0-1
+        currentProgress = received / total;
+        // onProgessBack(currentProgress);
+      }
+    });
+  }
   Future get(String url, {Map<String, dynamic> parameters, Options options}) async {
     Response response;
     if (parameters != null && options != null) {
